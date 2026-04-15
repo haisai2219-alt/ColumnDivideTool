@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ColumnDivideTool — CSVをカラムで分割するツール</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Hiragino Sans', 'Meiryo', sans-serif; color: #1a1a1a; background: #fafaf9; line-height: 1.7; }
+    
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: #fff; border-bottom: 1px solid #eee; }
+    nav .logo { font-weight: 600; font-size: 1.1rem; }
+    nav a { text-decoration: none; color: #555; font-size: 0.9rem; margin-left: 1.5rem; }
+    
+    .hero { text-align: center; padding: 4rem 2rem 3rem; background: #fff; border-bottom: 1px solid #eee; }
+    .hero h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; }
+    .hero p { font-size: 1.1rem; color: #555; max-width: 500px; margin: 0 auto 2rem; }
+    .dl-btn { display: inline-block; background: #1a1a1a; color: #fff; padding: 0.8rem 2rem; border-radius: 8px; text-decoration: none; font-size: 1rem; }
+    .dl-btn:hover { background: #333; }
+    
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; padding: 3rem 2rem; max-width: 900px; margin: 0 auto; }
+    .feat { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 1.5rem; }
+    .feat-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .feat h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .feat p { font-size: 0.85rem; color: #666; }
+    
+    .howto { background: #fff; border-top: 1px solid #eee; padding: 3rem 2rem; }
+    .howto h2 { text-align: center; font-size: 1.5rem; margin-bottom: 2rem; }
+    .steps { display: flex; flex-direction: column; gap: 1rem; max-width: 600px; margin: 0 auto; }
+    .step { display: flex; align-items: flex-start; gap: 1rem; }
+    .step-num { width: 32px; height: 32px; border-radius: 50%; background: #1a1a1a; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; font-weight: 600; }
+    .step-body h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .step-body p { font-size: 0.85rem; color: #666; }
+    
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #eee; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">ColumnDivideTool</div>
+  <div>
+    <a href="#features">機能</a>
+    <a href="#howto">使い方</a>
+    <a href="#download">ダウンロード</a>
+  </div>
+</nav>
+
+<section class="hero" id="download">
+  <h1>CSVを、カラムで分ける。</h1>
+  <p>設定ファイルを1行書いて、batをダブルクリック。<br>
+     指定したカラムの値ごとにCSVを自動分割します。</p>
+  <a class="dl-btn" href="download/ColumnDivideTool.zip" download>
+    無料ダウンロード（Windows / Java 11+）
+  </a>
+  <p style="margin-top: 1rem; font-size: 0.8rem; color: #999;">v1.0.0 — 無料・広告なし</p>
+</section>
+
+<section class="features" id="features">
+  <div class="feat">
+    <div class="feat-icon">📂</div>
+    <h3>複数ファイルを一括処理</h3>
+    <p>inputフォルダに置いたCSVをまとめて処理。ファイルをひとつひとつ開く必要はありません。</p>
+  </div>
+  <div class="feat">
+    <div class="feat-icon">✂️</div>
+    <h3>行数上限で自動分割</h3>
+    <p>1ファイルの最大行数を指定すると、超えた分は自動で連番ファイルに分割されます。</p>
+  </div>
+  <div class="feat">
+    <div class="feat-icon">🔍</div>
+    <h3>完全一致・部分一致フィルタ</h3>
+    <p>特定の値だけ抽出して分割することも可能。不要なデータを除外した出力が作れます。</p>
+  </div>
+  <div class="feat">
+    <div class="feat-icon">📝</div>
+    <h3>テキスト設定ファイル</h3>
+    <p>config.txt を編集するだけで全設定が完了。GUIなしでも直感的に使えます。</p>
+  </div>
+</section>
+
+<section class="howto" id="howto">
+  <h2>使い方</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>ZIPをダウンロードして解凍する</h4>
+        <p>ColumnDivideTool フォルダをデスクトップなど任意の場所に置く</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>input/ に分割したいCSVを置く</h4>
+        <p>複数ファイルをまとめて入れてもOK（UTF-8形式）</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h4>config.txt を編集する</h4>
+        <p>targetColumnName に分割基準のカラム名を書くだけでOK</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h4>columnDivide.bat をダブルクリック</h4>
+        <p>処理完了後、output/ フォルダに分割済みCSVが出力される</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 ColumnDivideTool — Windows 10/11 / Java 11以上が必要です
+</footer>
+
+</body>
+</html>
